@@ -12,6 +12,8 @@ RUN apk --no-cache add \
         git \
         docker \
         coreutils \
+        python3 \
+        python3-dev \
     && curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-${CLOUD_SDK_VERSION}-linux-x86_64.tar.gz && \
     tar xzf google-cloud-sdk-${CLOUD_SDK_VERSION}-linux-x86_64.tar.gz && \
     rm google-cloud-sdk-${CLOUD_SDK_VERSION}-linux-x86_64.tar.gz && \
@@ -23,7 +25,8 @@ RUN apk --no-cache add \
 VOLUME ["/root/.config"]
 
 # Install AWS 
-RUN pip install awscli
+RUN pip3 install --upgrade pip && \
+    pip3 install awscli
 
 # Install kubectl
 # Note: Latest version may be found on:
