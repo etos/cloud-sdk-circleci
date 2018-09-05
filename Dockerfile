@@ -22,6 +22,9 @@ RUN apk --no-cache add \
 
 VOLUME ["/root/.config"]
 
+# Install AWS 
+RUN pip install awscli
+
 # Install kubectl
 # Note: Latest version may be found on:
 # https://aur.archlinux.org/packages/kubectl-bin/
